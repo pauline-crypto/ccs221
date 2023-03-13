@@ -1,12 +1,12 @@
 #Activity 1 by Pauline Joy O. Bautista
 #Python program for Bresenham's Line.
+import streamlit as st
 import matplotlib.pyplot as plt
-import matplotlib.pyplot as buli
-plt.title('Bresenham Line Algorithm')
-plt.xlabel("X Axis")
-plt.ylabel("Y Axis")
 
-def bres(x1, y1, x2, y2, color):
+st.title('Bresenham Line Algorithm')
+st.write("Enter the values of x1, y1, x2, y2, and click on the 'Draw' button to draw the line using Bresenham's algorithm.")
+
+def bres(x1, y1, x2, y2):
     x,y = x1,y1
     dx = abs(x2 - x1)
     dy = abs(y2 -y1)
@@ -27,8 +27,8 @@ def bres(x1, y1, x2, y2, color):
     #midpoint
     mx = (x2+x1)/2
     my = (y2+y1)/2
-    print ('Midpoint is:', mx, ',', my)
-    buli.plot (mx, my, marker="o", markerfacecolor='blue')
+    st.write('Midpoint is:', mx, ',', my)
+    plt.plot (mx, my, marker="o", markerfacecolor='blue')
          
     #calculate increment in x & y for each steps
     for i in range(2, dx + 2):
@@ -44,19 +44,16 @@ def bres(x1, y1, x2, y2, color):
         ycoordinates.append(y)
 
     plt.plot(xcoordinates, ycoordinates)
-    plt.show()
+    st.pyplot()
 
 def main():
-   x = int(input("Enter X1: "))
-   y = int(input("Enter Y1: "))
-   xEnd = int(input("Enter X2: "))
-   yEnd = int(input("Enter Y2: "))
-   color = "y."
-   bres(x, y, xEnd, yEnd, color)
+    x1 = st.number_input("Enter X1:", min_value=0, max_value=1000, value=0)
+    y1 = st.number_input("Enter Y1:", min_value=0, max_value=1000, value=0)
+    x2 = st.number_input("Enter X2:", min_value=0, max_value=1000, value=0)
+    y2 = st.number_input("Enter Y2:", min_value=0, max_value=1000, value=0)
+
+    if st.button("Draw"):
+        bres(x1, y1, x2, y2)
 
 if __name__ == "__main__":
     main()
-    
-    
-    
-    
