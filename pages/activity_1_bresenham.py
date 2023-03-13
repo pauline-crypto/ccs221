@@ -1,6 +1,8 @@
 #Activity 1 by Pauline Joy O. Bautista
 #Python program for Bresenham's Line.
+import streamlit as st
 import matplotlib.pyplot as plt
+
 plt.title('Bresenham Line Algorithm')
 plt.xlabel("X Axis")
 plt.ylabel("Y Axis")
@@ -36,18 +38,17 @@ def bres(x1, y1, x2, y2, color):
         xcoordinates.append(x)
         ycoordinates.append(y)
 
-    plt.plot(xcoordinates, ycoordinates)
-    plt.show()
+    plt.plot(xcoordinates, ycoordinates, color)
+    st.pyplot()
 
 def main():
-   x = int(input("Enter X1: "))
-   y = int(input("Enter Y1: "))
-   xEnd = int(input("Enter X2: "))
-   yEnd = int(input("Enter Y2: "))
-   color = "y."
+   st.sidebar.title("Bresenham Line Algorithm")
+   x = st.sidebar.slider("X1", 0, 100, 50)
+   y = st.sidebar.slider("Y1", 0, 100, 50)
+   xEnd = st.sidebar.slider("X2", 0, 100, 70)
+   yEnd = st.sidebar.slider("Y2", 0, 100, 70)
+   color = st.sidebar.color_picker("Choose line color", "#ff0000")
    bres(x, y, xEnd, yEnd, color)
 
 if __name__ == "__main__":
     main()
-    
-    
