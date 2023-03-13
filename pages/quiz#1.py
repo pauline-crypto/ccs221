@@ -4,7 +4,11 @@ import streamlit as st
 
 def read_image(filename):
     img = cv2.imread(filename)
-    return cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    if img is None:
+        st.error("Error: Image file not found or could not be read.")
+        return None
+    else:
+        return cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
 def translate_image(img, tx_new, ty_new):
     rows, cols = img.shape[:2]
@@ -14,6 +18,9 @@ def translate_image(img, tx_new, ty_new):
 
 def main(): 
     img = read_image("original.jpg")
+    if img is None:
+        return
+
     tx, ty = 0, 0
 
     while True:
