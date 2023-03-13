@@ -1,6 +1,8 @@
 #Activity 1 by Pauline Joy O. Bautista
 #Python program for DDA Line.
+import streamlit as st
 import matplotlib.pyplot as plt 
+
 plt.title('DDA Line Algorithm')
 plt.xlabel("X Axis")
 plt.ylabel("Y Axis")
@@ -22,14 +24,15 @@ def DDALine(x1, y1, x2, y2, color):
         plt.plot(int(x1), int(y1), color)
         x1 += Xinc
         y1 += Yinc
-    plt.show()
+
+    st.pyplot(plt.gcf())
 
 
 def main():
-    x = int(input("Enter X1: "))
-    y = int(input("Enter Y1: "))
-    xEnd = int(input("Enter X2: "))
-    yEnd = int(input("Enter Y2: "))
+    x = st.number_input("Enter X1:", value=0)
+    y = st.number_input("Enter Y1:", value=0)
+    xEnd = st.number_input("Enter X2:", value=0)
+    yEnd = st.number_input("Enter Y2:", value=0)
     color = "r."
     DDALine(x, y, xEnd, yEnd, color)
 

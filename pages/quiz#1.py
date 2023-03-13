@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
+import streamlit as st
 
 def read_image(filename):
     img = cv2.imread(filename)
@@ -17,16 +17,16 @@ def main():
     tx, ty = 0, 0
 
     while True:
-        tx_new = int(input("Enter new x coordinate or press 1 to exit: "))
-        if tx_new == 1:
-            print ("Thank you!")
+        tx_new = st.text_input("Enter new x coordinate or press 1 to exit: ")
+        if tx_new == "1":
+            st.write("Thank you!")
             break
 
-        ty_new = int(input("Enter new y coordinate: "))
-        tx += tx_new
-        ty += ty_new
+        ty_new = st.text_input("Enter new y coordinate: ")
+        tx += int(tx_new)
+        ty += int(ty_new)
         transformed_img = translate_image(img, tx, ty)
-        plt.imshow(transformed_img)
-        plt.show()
+        st.image(transformed_img)
 
-main()
+if __name__ == '__main__':
+    main()

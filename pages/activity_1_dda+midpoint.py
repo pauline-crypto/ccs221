@@ -1,7 +1,8 @@
 #Activity 1 by Pauline Joy O. Bautista
 #Python program for DDA Line.
+import streamlit as st
 import matplotlib.pyplot as plt
-import matplotlib.pyplot as buli
+
 plt.title('DDA Line Algorithm + Midpoint')
 plt.xlabel("X Axis")
 plt.ylabel("Y Axis")
@@ -22,26 +23,24 @@ def DDALine(x1, y1, x2, y2, color):
     mx = (x2+x1)/2
     my = (y2+y1)/2
     print ('Midpoint is:', mx, ',', my)
-    buli.plot (mx, my, marker="o", markerfacecolor='blue')
+    plt.plot (mx, my, marker="o", markerfacecolor='blue')
     
     for i in range(0, int(steps + 1)):
 		 # Draw pixels
         plt.plot(int(x1), int(y1), color)
         x1 += Xinc
         y1 += Yinc
-    plt.show()
+    st.pyplot(plt)
 
 
 def main():
-    x = int(input("Enter X1: "))
-    y = int(input("Enter Y1: "))
-    xEnd = int(input("Enter X2: "))
-    yEnd = int(input("Enter Y2: "))
+    x1 = st.sidebar.slider("X1", -100, 100, 0)
+    y1 = st.sidebar.slider("Y1", -100, 100, 0)
+    x2 = st.sidebar.slider("X2", -100, 100, 0)
+    y2 = st.sidebar.slider("Y2", -100, 100, 0)
     color = "r."
-    DDALine(x, y, xEnd, yEnd, color)
+    DDALine(x1, y1, x2, y2, color)
 
 
 if __name__ == '__main__':
     main()
-    
-    
