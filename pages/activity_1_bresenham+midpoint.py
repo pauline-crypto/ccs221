@@ -28,7 +28,8 @@ def bres(x1, y1, x2, y2):
     mx = (x2+x1)/2
     my = (y2+y1)/2
     st.write('Midpoint is:', mx, ',', my)
-    plt.plot (mx, my, marker="o", markerfacecolor='blue')
+    fig, ax = plt.subplots()
+    ax.plot (mx, my, marker="o", markerfacecolor='blue')
          
     #calculate increment in x & y for each steps
     for i in range(2, dx + 2):
@@ -43,8 +44,8 @@ def bres(x1, y1, x2, y2):
         xcoordinates.append(x)
         ycoordinates.append(y)
 
-    plt.plot(xcoordinates, ycoordinates)
-    st.pyplot()
+    ax.plot(xcoordinates, ycoordinates)
+    st.pyplot(fig)
 
 def main():
     x1 = st.number_input("Enter X1:", min_value=0, max_value=1000, value=0)
