@@ -66,5 +66,7 @@ if uploaded_file is not None:
 
     # Translate the image
     st.subheader("Translated Image")
-    fig_translate = translate_image(img, 100, 50)
+    x_offset = st.slider("X Offset", -img.shape[1], img.shape[1], 0)
+    y_offset = st.slider("Y Offset", -img.shape[0], img.shape[0], 0)
+    fig_translate = translate_image(img, x_offset, y_offset)
     st.pyplot(fig_translate)
