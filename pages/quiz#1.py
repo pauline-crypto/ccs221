@@ -41,7 +41,7 @@ def main():
                 tx += int(tx_new)
                 ty += int(ty_new)
                 transformed_img = translate_image(img, tx, ty)
-                st.image(transformed_img, caption=f"Translated Image ({tx}, {ty})")
+                st.image(transformed_img, caption=f"Translated Image")
 
 if __name__ == '__main__':
     main()
