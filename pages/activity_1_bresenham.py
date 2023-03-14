@@ -44,11 +44,11 @@ def bres(x1, y1, x2, y2, color):
 
 def main():
    st.sidebar.title("Bresenham Line Algorithm")
-   x = st.sidebar.slider("X1", 0, 100, 50)
-   y = st.sidebar.slider("Y1", 0, 100, 50)
-   xEnd = st.sidebar.slider("X2", 0, 100, 70)
-   yEnd = st.sidebar.slider("Y2", 0, 100, 70)
-   color = st.sidebar.color_picker("Choose line color", "#ff0000")
+   x = st.number_input("X1", 0, 100, 50)
+   y = st.number_input("Y1", 0, 100, 50)
+   xEnd = st.number_input("X2", 0, 100, 70)
+   yEnd = st.number_input("Y2", 0, 100, 70)
+   color = st.color_picker("Choose line color", "#ff0000")
    bres(x, y, xEnd, yEnd, color)
 
 if __name__ == "__main__":

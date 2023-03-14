@@ -52,6 +52,7 @@ def main():
     y1 = st.number_input("Enter Y1:", min_value=0, max_value=1000, value=0)
     x2 = st.number_input("Enter X2:", min_value=0, max_value=1000, value=0)
     y2 = st.number_input("Enter Y2:", min_value=0, max_value=1000, value=0)
+    color = st.color_picker("Choose line color", "#ff0000")
 
     if st.button("Draw"):
         bres(x1, y1, x2, y2)

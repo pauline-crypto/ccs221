@@ -34,11 +34,11 @@ def DDALine(x1, y1, x2, y2, color):
 
 
 def main():
-    x1 = st.number_input("X1")
-    y1 = st.number_input("Y1")
-    x2 = st.number_input("X2")
-    y2 = st.number_input("Y2")
-    color = "r."
+    x1 = st.number_input("X1", min_value=0, max_value=1000, value=0)
+    y1 = st.number_input("Y1", min_value=0, max_value=1000, value=0)
+    x2 = st.number_input("X2", min_value=0, max_value=1000, value=0)
+    y2 = st.number_input("Y2", min_value=0, max_value=1000, value=0)
+    color = ".r"
     DDALine(x1, y1, x2, y2, color)
 
 
