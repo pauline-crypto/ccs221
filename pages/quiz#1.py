@@ -29,9 +29,16 @@ def main():
         if img is not None:
             st.image(img, caption="Original Image")
 
-            tx, ty = 0, 0
+            # Prompt user for original x and y coordinates
+            orig_x = st.text_input("Enter original x coordinate: ")
+            orig_y = st.text_input("Enter original y coordinate: ")
+            tx, ty = int(orig_x), int(orig_y)
 
             while True:
+                # Show the translated image
+                transformed_img = translate_image(img, tx, ty)
+                st.image(transformed_img, caption=f"Translated Image")
+
                 tx_new = st.text_input("Enter new x coordinate or press 1 to exit: ")
                 if tx_new == "1":
                     st.write("Thank you!")
@@ -40,8 +47,6 @@ def main():
                 ty_new = st.text_input("Enter new y coordinate: ")
                 tx += int(tx_new)
                 ty += int(ty_new)
-                transformed_img = translate_image(img, tx, ty)
-                st.image(transformed_img, caption=f"Translated Image")
 
 if __name__ == '__main__':
     main()
