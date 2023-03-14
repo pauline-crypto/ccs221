@@ -3,11 +3,12 @@
 import streamlit as st
 import matplotlib.pyplot as plt
 
-plt.title('Bresenham Line Algorithm')
-plt.xlabel("X Axis")
-plt.ylabel("Y Axis")
-
 def bres(x1, y1, x2, y2, color):
+    fig, ax = plt.subplots()
+    ax.set_title('Bresenham Line Algorithm')
+    ax.set_xlabel("X Axis")
+    ax.set_ylabel("Y Axis")
+
     x,y = x1,y1
     dx = abs(x2 - x1)
     dy = abs(y2 -y1)
@@ -38,8 +39,8 @@ def bres(x1, y1, x2, y2, color):
         xcoordinates.append(x)
         ycoordinates.append(y)
 
-    plt.plot(xcoordinates, ycoordinates, color)
-    st.pyplot()
+    ax.plot(xcoordinates, ycoordinates, color=color)
+    st.pyplot(fig)
 
 def main():
    st.sidebar.title("Bresenham Line Algorithm")
