@@ -14,7 +14,7 @@ def reflect_image(img):
     reflected_img=cv2.warpPerspective(img,m_reflection,(int(cols),int(rows)))
     plt.axis('off')
     plt.imshow(reflected_img)
-    st.pyplot()
+    return plt.gcf()
 
 def rotate_image(img, angle):
     rows, cols, ch = img.shape
@@ -23,7 +23,7 @@ def rotate_image(img, angle):
     rotated_img = cv2.warpPerspective(img, m_rotation, (cols, rows))
     plt.axis('off')
     plt.imshow(rotated_img)
-    st.pyplot()
+    return plt.gcf()
 
 def shear_image(img, shear_factor):
     rows, cols, ch = img.shape
@@ -31,7 +31,7 @@ def shear_image(img, shear_factor):
     sheared_img = cv2.warpPerspective(img, m_shearing, (int(cols * (1 + abs(shear_factor))), rows))
     plt.axis('off')
     plt.imshow(sheared_img)
-    st.pyplot()
+    return plt.gcf()
 
 def translate_image(img, x_offset, y_offset):
     rows, cols, channels = img.shape
@@ -39,7 +39,7 @@ def translate_image(img, x_offset, y_offset):
     translated_img = cv2.warpAffine(img, M, (cols, rows))
     plt.imshow(translated_img)
     plt.axis('off')
-    st.pyplot()
+    return plt.gcf()
 
 # Streamlit code
 st.title("Image Manipulation")
@@ -51,16 +51,20 @@ if uploaded_file is not None:
 
     # Reflect the image
     st.subheader("Reflected Image")
-    reflect_image(img)
+    fig_reflect = reflect_image(img)
+    st.pyplot(fig_reflect)
 
     # Rotate the image
     st.subheader("Rotated Image")
-    rotate_image(img, 10)
+    fig_rotate = rotate_image(img, 10)
+    st.pyplot(fig_rotate)
 
     # Shear the image
     st.subheader("Sheared Image")
-    shear_image(img, 0.5)
+    fig_shear = shear_image(img, 0.5)
+    st.pyplot(fig_shear)
 
     # Translate the image
     st.subheader("Translated Image")
-    translate_image(img, 100, 50)
+    fig_translate = translate_image(img, 100, 50)
+    st.pyplot(fig_translate)
