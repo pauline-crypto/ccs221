@@ -1,5 +1,3 @@
-#Activity 1 by Pauline Joy O. Bautista
-#Python program for DDA Line.
 import streamlit as st
 import matplotlib.pyplot as plt
 
@@ -10,9 +8,14 @@ plt.ylabel("Y Axis")
 def DDALine(x1, y1, x2, y2, color):
     dx = x2 - x1
     dy = y2 - y1
-
+    
+    # check if start and end points are the same
+    if dx == 0 and dy == 0:
+        plt.plot(x1, y1, color)
+        st.pyplot(plt)
+        return
+    
     # calculate steps required for generating pixels 
-   
     steps = abs(dx) if abs(dx) > abs(dy) else abs(dy)
          
     #calculate increment in x & y for each steps
@@ -44,4 +47,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
