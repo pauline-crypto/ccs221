@@ -4,6 +4,8 @@ import streamlit as st
 
 def read_image(filename):
     img = cv2.imread(filename)
+    if img is None:
+        raise ValueError("Invalid image file: {}".format(filename))
     print('Image shape:', img.shape)
     print('Image contents:', img)
     return cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -43,9 +45,12 @@ def scale_image(img):
 images = ['original1.jpg', 'original2.jpg', 'original3.jpg']
 
 for filename in images:
-    img = read_image(filename)
-    reflect_image(img)
-    rotate_image(img, 10)
-    shear_image(img, 0.5)
-    translate_image(img, 100, 50)
-    scale_image(img)
+    try:
+        img = read_image(filename)
+        reflect_image(img)
+        rotate_image(img, 10)
+        shear_image(img, 0.5)
+        translate_image(img, 100, 50)
+        scale_image(img)
+    except ValueError as e:
+        st.error(str(e))
